@@ -7,7 +7,7 @@ export const LOGIN_FAILURE = 'SIGNUP_FAILURE';
 
 export const signup = (userdata) => async (dispatch) => {
     try{
-        const response = await axios.post('http://localhost:8000/api/auth/signup', userdata);
+        const response = await axios.post('https://one0xersbackend.onrender.com/api/auth/signup', userdata);
         dispatch({type : SIGNUP_SUCCESS, payload : response.data});
     }catch(err) {
         dispatch({type: SIGNUP_FAILURE, payload: err.response.data});
@@ -16,7 +16,7 @@ export const signup = (userdata) => async (dispatch) => {
 
 export const login = (userdata) => async (dispatch) => {
     try {
-        const response = await axios.post('http://localhost:8000/api/auth/login', userdata);
+        const response = await axios.post('https://one0xersbackend.onrender.com/api/auth/login', userdata);
         const { token, admin_id } = response.data;
 
         sessionStorage.setItem('authToken', token);
