@@ -10,7 +10,7 @@ export const getAllProducts = (admin_id="") => {
     return async (dispatch) => {
         dispatch({type : GET_PRODUCTS_REQUEST})
     try {
-        const response = await axios.get(`http://localhost:8000/api/products?admin_id=${admin_id}`);
+        const response = await axios.get(`https://one0xersbackend.onrender.com/api/products?admin_id=${admin_id}`);
         console.log("response data",response.data);
         dispatch({type : GET_PRODUCTS_SUCCESS, payload : response.data});
     } catch (error) {
@@ -21,7 +21,7 @@ export const getAllProducts = (admin_id="") => {
 
 export const createProduct = (productData, token) => async (dispatch) => {
     try {
-        const response = await axios.post('http://localhost:8000/api/products',productData, {
+        const response = await axios.post('https://one0xersbackend.onrender.com/api/products',productData, {
             headers: {Authorization: `Bearer ${token}`}
         });
         dispatch({type : CREATE_PRODUCTS_SUCCESS, payload : response.data});
@@ -35,7 +35,7 @@ export const UPDATE_PRODUCT_FAIL = 'UPDATE_PRODUCT_FAIL';
 
 export const updateProduct = (productId, productData, token) => async (dispatch) => {
     try {
-        const response = await axios.put(`http://localhost:8000/api/products/${productId}`, productData, {
+        const response = await axios.put(`https://one0xersbackend.onrender.com/api/products/${productId}`, productData, {
             headers: { Authorization: `Bearer ${token}` }
         });
         dispatch({ type: UPDATE_PRODUCT_SUCCESS, payload: response.data });
@@ -49,7 +49,7 @@ export const DELETE_PRODUCT_FAIL = 'DELETE_PRODUCT_FAIL';
 
 export const deleteProduct = (productId, token) => async (dispatch) => {
     try {
-        const response = await axios.delete(`http://localhost:8000/api/products/${productId}`, {
+        const response = await axios.delete(`https://one0xersbackend.onrender.com/api/products/${productId}`, {
             headers: { Authorization: `Bearer ${token}` }
         });
         dispatch({ type: DELETE_PRODUCT_SUCCESS, payload: response.data });
